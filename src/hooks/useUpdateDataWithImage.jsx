@@ -1,19 +1,29 @@
-import React, { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage, db, auth } from "../../configs/firebase";
+import React, { useState, useEffect } from "react";
+import { doc, updateDoc } from "firebase/firestore";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
+import { storage, db, auth } from "../configs/firebase";
 import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
-import UseCompressImage from "../../hooks/useCompressImage";
+import UseCompressImage from "../hooks/useCompressImage";
 
-export default function AddMenu() {
+export default function UseUpdateDataWithImage({
+  id,
+  image,
+  type,
+  collection,
+}) {
   const [user] = useAuthState(auth);
   const [formData, setFormData] = useState({
-    name: "Nasi Goreng",
+    name: "",
     image: "",
-    price: "50000",
-    category: "Seafood",
+    price: "",
+    category: "",
   });
 
   const [progressCompress, setProgressCompress] = useState(0);
@@ -28,53 +38,60 @@ export default function AddMenu() {
     UseCompressImage(e, formData, setFormData, setProgressCompress);
   };
 
+  const success = () => {
+    toast("Menu Edited", { type: "success" });
+    setFormData({
+      name: "",
+      image: "",
+      price: "",
+      category: "",
+    });
+  };
+
+  const error = () => {
+    toast("Error", { type: "error" });
+  };
+
   const handlePublish = () => {
-    if (!formData.name || !formData.category || !formData.price) {
-      toast("Please fill all the fields");
-      return;
-    }
+    const docRef = doc(db, type, id);
 
-    const storageRef = ref(storage, `/image/${formData.image.name}`);
+    if (formData?.name)
+      updateDoc(docRef, { name: formData?.name }).then(success).catch(error);
+    if (formData?.price)
+      updateDoc(docRef, { price: formData?.price }).then(success).catch(error);
+    if (formData?.category)
+      updateDoc(docRef, { category: formData?.category })
+        .then(success)
+        .catch(error);
+    if (formData?.image) {
+      const storageRef = ref(storage, `/image/${formData.image.name}`);
 
-    const uploadImage = uploadBytesResumable(storageRef, formData.image);
+      const uploadImage = uploadBytesResumable(storageRef, formData.image);
 
-    uploadImage.on(
-      "state_changed",
-      (snapshot) => {
-        const progressPercent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setProgress(progressPercent);
-      },
-      (err) => {
-        console.log(err);
-      },
-      () => {
-        setFormData({
-          name: "",
-          image: "",
-          price: "",
-          category: "",
-        });
-
-        getDownloadURL(uploadImage.snapshot.ref).then((url) => {
-          const kameradRef = collection(db, "list-menu");
-          addDoc(kameradRef, {
-            name: formData.name,
-            image: url,
-            price: formData.price,
-            category: formData.category,
-          })
-            .then(() => {
-              toast("Menu Created", { type: "success" });
-              setProgress(0);
+      uploadImage.on(
+        "state_changed",
+        (snapshot) => {
+          const progressPercent = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(progressPercent);
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          getDownloadURL(uploadImage.snapshot.ref)
+            .then((url) => {
+              if (url)
+                updateDoc(docRef, { image: url }).then(success).catch(error);
             })
-            .catch(() => {
-              toast("Error", { type: "error" });
+            .then(async () => {
+              const storageRef = ref(storage, image);
+              await deleteObject(storageRef);
             });
-        });
-      }
-    );
+        }
+      );
+    }
   };
 
   return (

@@ -6,7 +6,7 @@ import "./index.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import useLoadDataWithOffset from "../../hooks/useLoadData";
 import UseDeleteDataWithImage from "../../hooks/UseDeleteDataWithImage";
-
+import UseUpdateDataWithImage from "../../hooks/useUpdateDataWithImage";
 
 const Admin = () => {
   const [user] = useAuthState(auth);
@@ -14,7 +14,9 @@ const Admin = () => {
   const [offset, setOffset] = useState(1);
   const dataKegiatan = useLoadDataWithOffset("list-menu", 3, offset);
 
-  const loadMoreKegiatan = () => { setOffset(offset + 1)};
+  const loadMoreKegiatan = () => {
+    setOffset(offset + 1);
+  };
 
   return (
     <div style={{ marginBottom: 300 }}>
@@ -32,12 +34,19 @@ const Admin = () => {
                     <div>{category}</div>
                     <div>{`Rp${price}`}</div>
                     {user && (
-                      <UseDeleteDataWithImage
-                        id={id}
-                        image={image}
-                        type="list-menu"
-                        collection="Menu"
-                      />
+                      <>
+                        <UseDeleteDataWithImage
+                          id={id}
+                          image={image}
+                          type="list-menu"
+                          collection="Menu"
+                        />
+                        <UseUpdateDataWithImage
+                          id={id}
+                          type="list-menu"
+                          image={image}
+                        />
+                      </>
                     )}
                   </div>
                 </div>
@@ -50,7 +59,7 @@ const Admin = () => {
         </div>
         <div>
           <a href="./">
-          <h1>{`< Go Back`}</h1>
+            <h1>{`< Go Back`}</h1>
           </a>
           <AddMenu></AddMenu>
         </div>
