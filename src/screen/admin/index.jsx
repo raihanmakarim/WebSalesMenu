@@ -26,28 +26,28 @@ const Admin = () => {
             <span className="visually-hidden">Loading...</span>
           ) : (
             dataKegiatan.map(({ id, name, image, category, price }) => (
-              <div className="kameradContainerz">
-                <div key={id} className="kamerad-container-id">
-                  <img src={image} style={{ width: 135, height: 135 }}></img>
-                  <div className="kamerad-idz">
-                    <div>{name}</div>
-                    <div>{category}</div>
-                    <div>{`Rp${price}`}</div>
-                    {user && (
-                      <>
+              <div className="adminMenuContainer">
+                <div key={id} className="admin-container-id">
+                  <img src={image}></img>
+                  <div className="adminMenu">
+                    <div className="currentMenu">
+                      <div>{name}</div>
+                      <div>{category}</div>
+                      <div>{`Rp${price}`}</div>
+                      {user && (
                         <UseDeleteDataWithImage
                           id={id}
                           image={image}
                           type="list-menu"
                           collection="Menu"
                         />
-                        <UseUpdateDataWithImage
-                          id={id}
-                          type="list-menu"
-                          image={image}
-                        />
-                      </>
-                    )}
+                      )}
+                    </div>
+                    <UseUpdateDataWithImage
+                      id={id}
+                      type="list-menu"
+                      image={image}
+                    />
                   </div>
                 </div>
               </div>
