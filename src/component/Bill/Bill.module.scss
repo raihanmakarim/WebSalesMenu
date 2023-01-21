@@ -9,15 +9,20 @@
 
 .headerButtonBilling {
   position: absolute;
+  background: #bdc6e2;
   z-index: 2;
   top: 10;
   right: 2vw;
-
+  width: 75px;
   justify-content: center;
   align-items: center;
-  background: #495da7;
+  display: flex;
+  flex-direction: column;
+  color: #5469ad;
   padding-block: 10px;
-  font-size: 25px;
+  font-size: 10px;
+  user-select: none;
+  cursor: pointer;
 }
 
 .BillingHidden {
@@ -28,12 +33,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 
   background: #e3e6f3;
   width: 100%;
-}
-
-.dropdown {
+  font-size: 25px;
 }
 
 .menulist {
@@ -82,6 +86,9 @@
   align-items: center;
   height: 50px;
   width: 100%;
+  user-select: none;
+  font-size: 35px;
+
   cursor: pointer;
 }
 
@@ -91,13 +98,38 @@
   color: black;
 }
 
-.headerButton {
+.splitBill {
   display: flex;
+  flex-direction: column;
+  background: #495da7;
+  color: white;
   justify-content: center;
   align-items: center;
-  background: #495da7;
+  height: 50px;
+  width: 100%;
+  user-select: none;
+  font-size: 10px;
+
+  cursor: pointer;
+}
+
+.splitBill:hover {
+  cursor: pointer;
+  background: #77adfa;
+  color: black;
+}
+
+.headerButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #bdc6e2;
   padding-block: 10px;
-  font-size: 25px;
+  font-size: 10px;
+  user-select: none;
+  width: 75px;
+  color: #5469ad;
 }
 
 .viewTable {
@@ -131,6 +163,7 @@
   font-size: 25px;
   text-align: center;
   cursor: pointer;
+  user-select: none;
 }
 
 .clearSaleButton:hover {

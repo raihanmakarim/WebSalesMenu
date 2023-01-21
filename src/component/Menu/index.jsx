@@ -3,6 +3,7 @@ import s from "./Menu.module.scss";
 import { Context as MenuContext } from "../../context/menuContext";
 import { Context as CartContext } from "../../context/cartContext";
 import { mutateData, objectToArray } from "../../helpers/GlobalHelpers";
+import { numberToCurrency } from "../../helpers/GlobalHelpers";
 
 const Menu = () => {
   const { state: menuState, getAllMenu } = useContext(MenuContext);
@@ -41,7 +42,9 @@ const Menu = () => {
                       <div className={s.cardImage}>
                         <img src={item?.image} />
                       </div>
-                      <div className={s.cardFooter}>{item?.price}</div>
+                      <div className={s.cardFooter}>
+                        {numberToCurrency(item?.price)}
+                      </div>
                     </div>
                     <div className={s.cardOption}>
                       <div
@@ -50,7 +53,7 @@ const Menu = () => {
                       >
                         -
                       </div>
-                      <div style={{ color: "black" }}>
+                      <div style={{ color: "white" }}>
                         {cartState.find((el) => item?.name === el?.name)
                           ?.quantity || 0}
                       </div>

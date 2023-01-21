@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import s from "./Modal.module.scss";
+import { numberToCurrency } from "../../../helpers/GlobalHelpers";
 
 const Modal = ({
   open,
@@ -99,17 +100,32 @@ const Modal = ({
             <p className={s.closeBtn} onClick={onClose}>
               X
             </p>
-            <div className={s.content}>
-              <div>harga total : {totalValue}</div>
-              <input
-                type="number"
-                title="Rp"
-                onChange={handlePayment}
-                value={paymentInput}
-                onKeyUp={enter}
-              />
-              <button onClick={click}></button>
-              <div>{change}</div>
+            <div className={s.contentCharge}>
+              <h1>Charge Menu</h1>
+              <div>Total Price: {numberToCurrency(totalValue)}</div>
+              <div>Input Payment </div>
+              <div className={s.cash}>
+                <input
+                  type="number"
+                  title="Rp"
+                  onChange={handlePayment}
+                  value={paymentInput}
+                  onKeyUp={enter}
+                />
+                <button onClick={click}>OK</button>
+              </div>
+              <div>Total Change: {numberToCurrency(change)}</div>
+              <button
+                style={{ width: "100px", height: "50px", fontSize: "20px" }}
+                onClick={() => {
+                  click();
+                  setTimeout(() => {
+                    onClose();
+                  }, 200);
+                }}
+              >
+                OK
+              </button>
             </div>
           </div>
         </div>

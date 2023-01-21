@@ -4,8 +4,11 @@ import Dropdown from "./Dropdown";
 import Modal from "./Modal";
 import html2canvas from "html2canvas";
 import { useReactToPrint } from "react-to-print";
-
+import { numberToCurrency } from "../../helpers/GlobalHelpers";
 import { Context as CartContext } from "../../context/cartContext";
+import { CgProfile } from "react-icons/cg";
+import { FaListUl } from "react-icons/fa";
+import { BsLayoutSplit } from "react-icons/bs";
 
 const Bill = () => {
   const { state: cartState, clearCart } = useContext(CartContext);
@@ -91,13 +94,17 @@ const Bill = () => {
         updateChange={(change) => setChange(change)}
       ></Modal>
       <div className={s.headerButtonBilling} onClick={updateBillinglist}>
-        billing
+        <FaListUl style={{ color: "#5469AD", fontSize: "42px" }} />
+        Billing List
       </div>
       <div ref={printRef} className={Billingclass}>
         <div>
           <div className={s.header}>
             <div className={s.headerButton}>
-              <a href="./login">Login</a>
+              <a href="./login">
+                <CgProfile style={{ color: "#5469AD", fontSize: "40px" }} />
+              </a>
+              Customer
             </div>
             <h1>New Customer</h1>
             <div className={s.headerButton}>billing</div>
@@ -129,7 +136,7 @@ const Bill = () => {
                     <div>{el?.name}</div>
                     <div style={{ display: "flex", gap: "10px" }}>
                       <div>{el?.quantity}x</div>
-                      <div>{`Rp${el?.quantity * el?.price}`}</div>
+                      <div>{numberToCurrency(el?.quantity * el?.price)}</div>
                     </div>
                   </div>
                 );
@@ -138,23 +145,23 @@ const Bill = () => {
 
           <div className={s.listItem}>
             <div>Delivery Fee :</div>
-            <div>Rp{deliveryFee}</div>
+            <div>{numberToCurrency(deliveryFee)}</div>
           </div>
           <div className={s.listItem}>
             <div>Sub-Total:</div>
-            <div>Rp{total + deliveryFee}</div>
+            <div>{numberToCurrency(total + deliveryFee)}</div>
           </div>
           <div className={s.listItem}>
             <div>Total:</div>
-            <div>Rp{total + deliveryFee}</div>
+            <div>{numberToCurrency(total + deliveryFee)}</div>
           </div>
           <div className={s.listItem}>
             <div>Payment:</div>
-            <div>Rp{payment}</div>
+            <div>{numberToCurrency(payment)}</div>
           </div>
           <div className={s.listItem} style={{ marginBottom: "3px" }}>
             <div>Change:</div>
-            <div>Rp{change}</div>
+            <div>{numberToCurrency(change)}</div>
           </div>
         </div>
 
@@ -172,7 +179,8 @@ const Bill = () => {
         </div>
 
         <div style={{ display: "flex", gap: "1px" }}>
-          <div className={s.charge} style={{ width: "20%" }}>
+          <div className={s.splitBill} style={{ width: "20%" }}>
+            <BsLayoutSplit style={{ fontSize: "35px" }} />
             Split Bill
           </div>
 
@@ -182,7 +190,7 @@ const Bill = () => {
               setOpenChargeModal(true);
             }}
           >
-            Charge
+            Charge {numberToCurrency(total + deliveryFee)}
           </div>
         </div>
       </div>

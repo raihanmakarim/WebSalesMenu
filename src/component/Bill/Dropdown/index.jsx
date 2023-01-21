@@ -19,7 +19,7 @@ const Dropdown = ({ updateDineOptions }) => {
 
   return (
     <div className={s.dropDown}>
-      <div className={s.dropDownItem}>{dineOptions[dineIndex]}</div>
+      <div className={s.dropDownItemSelected}>{dineOptions[dineIndex]}</div>
       <div className={s.dropDownContent}>
         <div
           onClick={() => setDineIndex(dineIndex + 1)}

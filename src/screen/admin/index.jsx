@@ -7,6 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import useLoadDataWithOffset from "../../hooks/useLoadData";
 import UseDeleteDataWithImage from "../../hooks/UseDeleteDataWithImage";
 import UseUpdateDataWithImage from "../../hooks/useUpdateDataWithImage";
+import { numberToCurrency } from "../../helpers/GlobalHelpers";
 
 const Admin = () => {
   const [user] = useAuthState(auth);
@@ -33,7 +34,7 @@ const Admin = () => {
                     <div className="currentMenu">
                       <div>{name}</div>
                       <div>{category}</div>
-                      <div>{`Rp${price}`}</div>
+                      <div>{numberToCurrency(price)}</div>
                       {user && (
                         <UseDeleteDataWithImage
                           id={id}

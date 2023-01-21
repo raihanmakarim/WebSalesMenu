@@ -17,10 +17,21 @@
   }
 }
 
+.dropDownItemSelected {
+  padding-block: 10px;
+  border-top: white 1px solid;
+  background: white;
+  :hover {
+    background: #ffffff;
+    color: white;
+  }
+}
+
 .dropDownItem {
   padding-block: 10px;
   border-top: white 1px solid;
 }
+
 .dropDownContent {
   display: none;
   position: absolute;
