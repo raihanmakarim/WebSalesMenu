@@ -10,4 +10,9 @@
   gap: 50px;
   padding-inline: 2vw;
   margin: 0 auto;
+
+  @media screen and (max-width: 420px) {
+    flex-direction: column-reverse;
+    gap: 0;
+  }
 }

@@ -1,6 +1,9 @@
 .dropDown {
   text-align: center;
   background: white;
+  @media screen and (max-width: 420px) {
+    width: 96vw;
+  }
 }
 
 .dropDown:hover {
@@ -14,6 +17,9 @@
     cursor: pointer;
 
     background: #e3e6f3;
+    @media screen and (max-width: 420px) {
+      width: 96vw;
+    }
   }
 }
 
@@ -30,6 +36,9 @@
 .dropDownItem {
   padding-block: 10px;
   border-top: white 1px solid;
+  @media screen and (max-width: 420px) {
+    width: 96vw;
+  }
 }
 
 .dropDownContent {

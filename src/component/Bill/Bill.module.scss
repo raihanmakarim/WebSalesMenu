@@ -38,6 +38,10 @@
   background: #e3e6f3;
   width: 100%;
   font-size: 25px;
+
+  @media screen and (max-width: 420px) {
+    width: 96vw;
+  }
 }
 
 .menulist {
@@ -53,6 +57,9 @@
 .billBlock {
   display: flex;
   background: #ffffff;
+  @media screen and (max-width: 420px) {
+    width: 96vw;
+  }
 }
 
 .billListBlock {
@@ -60,6 +67,9 @@
   height: 55vh;
   flex-direction: column;
   background: #ffffff;
+  @media screen and (max-width: 420px) {
+    width: 96vw;
+  }
 }
 
 .billButton {
@@ -90,6 +100,11 @@
   font-size: 35px;
 
   cursor: pointer;
+
+  @media screen and (max-width: 420px) {
+    font-size: 25px;
+    margin-bottom: 50px;
+  }
 }
 
 .charge:hover {
@@ -164,6 +179,17 @@
   text-align: center;
   cursor: pointer;
   user-select: none;
+  @media screen and (max-width: 420px) {
+    width: 96vw;
+  }
+}
+
+.footer {
+  display: flex;
+  gap: 1px;
+  @media screen and (max-width: 420px) {
+    width: 96vw;
+  }
 }
 
 .clearSaleButton:hover {

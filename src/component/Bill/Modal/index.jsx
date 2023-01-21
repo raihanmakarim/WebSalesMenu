@@ -103,7 +103,8 @@ const Modal = ({
             <div className={s.contentCharge}>
               <h1>Charge Menu</h1>
               <div>Total Price: {numberToCurrency(totalValue)}</div>
-              <div>Input Payment </div>
+              <label>Input Payment </label>
+
               <div className={s.cash}>
                 <input
                   type="number"
@@ -114,6 +115,21 @@ const Modal = ({
                 />
                 <button onClick={click}>OK</button>
               </div>
+              <div className={s.priceOption}>
+                <button onClick={() => setPaymentInput(totalValue)}>
+                  No Change
+                </button>
+                <button onClick={() => setPaymentInput(50000)}>
+                  Rp 50.000
+                </button>
+                <button onClick={() => setPaymentInput(100000)}>
+                  Rp 100.000
+                </button>
+                <button onClick={() => setPaymentInput(200000)}>
+                  Rp 200.000
+                </button>
+              </div>
+
               <div>Total Change: {numberToCurrency(change)}</div>
               <button
                 style={{ width: "100px", height: "50px", fontSize: "20px" }}

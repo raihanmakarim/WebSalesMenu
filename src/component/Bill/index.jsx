@@ -178,7 +178,7 @@ const Bill = () => {
           </div>
         </div>
 
-        <div style={{ display: "flex", gap: "1px" }}>
+        <div className={s.footer}>
           <div className={s.splitBill} style={{ width: "20%" }}>
             <BsLayoutSplit style={{ fontSize: "35px" }} />
             Split Bill
