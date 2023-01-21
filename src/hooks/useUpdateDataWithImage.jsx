@@ -104,7 +104,7 @@ export default function UseUpdateDataWithImage({
         </>
       ) : (
         <div className="formadmincontainer">
-          <div className="formtitle">Create</div>
+          <div className="formtitle">Edit</div>
 
           <div className="formadmin">
             <label htmlFor="">Name</label>
@@ -164,7 +164,7 @@ export default function UseUpdateDataWithImage({
             </div>
           )}
           <button className="formbutton" onClick={handlePublish}>
-            Publish
+            Submit Edit
           </button>
         </div>
       )}
