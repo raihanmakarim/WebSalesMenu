@@ -1,0 +1,32 @@
+.dropDown {
+  text-align: center;
+  background: white;
+}
+
+.dropDown:hover {
+  background: #e3e6f3;
+  cursor: pointer;
+
+  .dropDownContent {
+    display: block;
+    color: black;
+    text-align: center;
+    cursor: pointer;
+
+    background: #e3e6f3;
+  }
+}
+
+.dropDownItem {
+  padding-block: 10px;
+  border-top: white 1px solid;
+}
+.dropDownContent {
+  display: none;
+  position: absolute;
+  z-index: 10;
+
+  width: 35vw;
+  text-align: center;
+  color: black;
+}

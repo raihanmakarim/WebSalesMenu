@@ -1,0 +1,150 @@
+.BillingVisible {
+  display: flex;
+  flex-direction: column;
+
+  height: 90vh;
+  width: 35vw;
+  gap: 3px;
+}
+
+.headerButtonBilling {
+  position: absolute;
+  z-index: 2;
+  top: 10;
+  right: 2vw;
+
+  justify-content: center;
+  align-items: center;
+  background: #495da7;
+  padding-block: 10px;
+  font-size: 25px;
+}
+
+.BillingHidden {
+  display: none;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  background: #e3e6f3;
+  width: 100%;
+}
+
+.dropdown {
+}
+
+.menulist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+
+  margin-block: 10px;
+}
+
+.billBlock {
+  display: flex;
+  background: #ffffff;
+}
+
+.billListBlock {
+  display: flex;
+  height: 55vh;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.billButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e3e6f3;
+  width: 100%;
+  padding-block: 10px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.billButton:hover {
+  background: #495da7;
+  color: white;
+}
+
+.charge {
+  display: flex;
+  background: #495da7;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.charge:hover {
+  cursor: pointer;
+  background: #77adfa;
+  color: black;
+}
+
+.headerButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #495da7;
+  padding-block: 10px;
+  font-size: 25px;
+}
+
+.viewTable {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 10px;
+  width: 90%;
+  margin: 0 auto;
+  padding-inline: 5px;
+  color: #9ec5fb;
+  cursor: pointer;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  padding-inline: 5px;
+}
+
+.clearSaleButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+
+  padding-block: 10px;
+  font-size: 25px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.clearSaleButton:hover {
+  cursor: pointer;
+  background: #495da7;
+  color: white;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  padding-inline: 5px;
+  font-size: 25px;
+}
