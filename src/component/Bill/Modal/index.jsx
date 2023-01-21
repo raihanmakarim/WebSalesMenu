@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import s from "./Modal.module.scss";
-import { Context as CartContext } from "../../../context/CartContext";
 
 const Modal = ({
   open,
