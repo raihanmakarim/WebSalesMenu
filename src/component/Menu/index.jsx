@@ -14,6 +14,7 @@ const Menu = () => {
   } = useContext(CartContext);
   const mutatedData = mutateData(menuState) || {};
   const mutatedDataToArray = objectToArray(mutatedData) || [];
+  console.log(mutatedDataToArray);
 
   useEffect(() => {
     getAllMenu(), [];
