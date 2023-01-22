@@ -12,7 +12,7 @@ const menuReducer = (state, action) => {
 };
 
 const getAllMenu = (dispatch) => {
-  const response = useLoadData("list-menu", 30, 1);
+  const response = useLoadData("list-menu", 50, 1);
   return async () => {
     dispatch({ type: "get", payload: response });
   };
