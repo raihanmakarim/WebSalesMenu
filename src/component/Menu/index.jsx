@@ -19,8 +19,6 @@ const Menu = () => {
     getAllMenu(), [];
   });
 
-  console.log(mutatedDataToArray);
-
   return (
     <div className={s.menu}>
       {mutatedDataToArray &&
